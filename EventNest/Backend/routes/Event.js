@@ -15,7 +15,7 @@ router.post('/add', async (req, res) => {
 
   try {
     const savedEvent = await event.save();
-    res.send(savedEvent);
+    res.status(201).send(savedEvent); // Set the status code to 201 because RESTful API practice to return a 201 Created
   } catch (err) {
     res.status(400).send(err);
   }
@@ -36,11 +36,13 @@ router.get('/all', async (req, res) => {
 //find events by ID 
 router.get('/find/:id', async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id);
-    if (!event) return res.status(404).send('Event not found');
-    res.send(event);
+    const event = await Event.findById(req.params.id);//FindByID if we are working with the default mongoDB id format 
+    if (!event) 
+      return res.status(404).send('Event not found');
+      res.send(event);
   } catch (err) {
-    res.status(500).send(err);
+    console.log(err);
+    res.status(500).send("Internal server Error");
   }
 });
 
@@ -59,7 +61,7 @@ router.put('/update/:id', async (req, res) => {
     if (!event) return res.status(404).send('Event not found');
     res.send(event);
   } catch (err) {
-    console.error(err);
+     console.error(err);
     res.status(500).send(err);
   }
 });

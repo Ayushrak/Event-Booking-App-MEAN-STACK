@@ -19,7 +19,7 @@ app.use('/Users',UserRoute);
 
 //port set up 
 
-const server= app.listen(3000,()=>{
+const server=app.listen(3000,()=>{
 
 
     console.log('server is working');

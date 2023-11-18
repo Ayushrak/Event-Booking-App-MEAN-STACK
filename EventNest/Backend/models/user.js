@@ -1,14 +1,35 @@
 const mongoose=require('mongoose');
 
 
-const User =mongoose.model('User' , {
+const { db2 } = require('../config/connect');
 
-        Username:{ type: String, required: true, unique: true },
-        email: { type: String, required: true, unique: true },
-        password: { type: String, required: true }
+const UserSchema = new mongoose.Schema({
+        // Username:{ type: String, required: true, unique: true },
+        // email: { type: String, required: true, unique: true },
+        // password: { type: String, required: true }
 
-    } );
+        Username:String,
+        email: String, 
+        password: String
+
+
+});
+
+const User = db2.model('User', UserSchema);
+
+module.exports = User;
 
 
 
-module.exports=User; 
+
+// const User =mongoose.model('User' , {
+
+//         Username:{ type: String, required: true, unique: true },
+//         email: { type: String, required: true, unique: true },
+//         password: { type: String, required: true }
+
+//     } );
+
+
+
+// module.exports=User; 

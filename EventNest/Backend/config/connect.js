@@ -15,4 +15,5 @@ db2.on('error', (err) => console.error('Error connecting to Users DB:', err));
 
 module.exports = { db1, db2 };
 
-module.exports= mongoose; 
+
+
