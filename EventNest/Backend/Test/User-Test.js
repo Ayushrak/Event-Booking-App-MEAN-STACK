@@ -9,11 +9,11 @@ describe('User Tests', function() {
 
     it('should create a new user', function(done) {
         chai.request(app)
-            .post('/users/register')
+            .post('/Users/register')
             .send({ 
-                "Username": "joe",
-                "email": "joelle@example.com",
-                "password": "StrongPass123!"
+                "Username": "Balkis",
+                "email": "Balkis@example.com",
+                "password": "BalkisPass123!"
             })
             .end((err, res) => {
                 if (err) {

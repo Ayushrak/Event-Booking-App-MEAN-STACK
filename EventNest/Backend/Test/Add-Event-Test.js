@@ -9,7 +9,7 @@ describe('Event Creation Tests', function() {
 
     it('should add a new event', function(done) {
         const newEvent = {
-            Title: "New Event",
+            Title: "Mock Event",
             Date: "2023-01-01",
             Time: "18:00",
             location: "123 Event St.",

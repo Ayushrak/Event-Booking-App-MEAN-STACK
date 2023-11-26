@@ -1,0 +1,30 @@
+app-component
+│
+├── header-component
+│   └── conditionally rendered user-menu (based on authentication status)
+│
+├── home-component
+├── about-component
+├── contact-component
+│
+├── auth-module (Lazy Loaded)
+│   ├── login-component
+│   ├── register-component
+│   └── forget-password-component
+│
+├── user-module (Lazy Loaded, Protected by AuthGuard)
+│   ├── user-profile-component
+│   │   ├── edit-profile-component (optional)
+│   │   └── display-profile-info-component (optional)
+│   │
+│   └── user-events-component
+│       ├── booked-events-component
+│       └── expired-events-component
+│
+├── shared-components
+│   └── ... (reusable components like buttons, modals, etc.)
+│
+└── services
+    ├── auth-service (for handling authentication)
+    ├── user-service (for user-related data)
+    └── ... (other services)

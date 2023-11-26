@@ -5,8 +5,7 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const cors=require('cors');
 const upload = multer({ dest: 'uploads/' });
-
-const { db1, db2 } = require('./config/connect');
+require('./config/connect');
 const EventRoute=require('./routes/Event');
 const UserRoute=require('./routes/User');
 
@@ -14,8 +13,8 @@ const UserRoute=require('./routes/User');
 const app = express();
 app.use(express.json()); 
 //routes set up 
-app.use('/Events',EventRoute); 
-app.use('/Users',UserRoute);
+app.use('/TPL/Events',EventRoute); 
+app.use('/TPL/Users',UserRoute);
 
 //port set up 
 

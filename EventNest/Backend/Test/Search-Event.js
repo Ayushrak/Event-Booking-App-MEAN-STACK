@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 describe('Event Retrieval Tests', function() {
 
     // Replace with an actual event ID from your database
-    const expectedId = "507f1f77bcf86cd799439011";
+    const expectedId = "507f191e810c19729de860ea";
     it('should retrieve an event by ID', function(done) {
         chai.request(app)
             .get(`/Events/find/${expectedId}`) 
