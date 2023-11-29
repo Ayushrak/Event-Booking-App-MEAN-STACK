@@ -17,7 +17,7 @@ describe('Event Creation Tests', function() {
         };
 
         chai.request(app)
-            .post('/Events/add') // Replace with your actual endpoint for adding events
+            .post('/TPL/Events/add') // Replace with your actual endpoint for adding events
             .send(newEvent)
             .end(function(err, res) {
                 if (err) {

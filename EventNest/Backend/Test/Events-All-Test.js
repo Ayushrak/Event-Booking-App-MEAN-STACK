@@ -10,7 +10,7 @@ describe('Event Tests', function() {
 
     it('should list all events', function(done) {
         chai.request(app)
-            .get('/Events/all') 
+            .get('/TPL/Events/all') 
             .end(function(err, res) {
               
                 if (err) {
@@ -25,7 +25,9 @@ describe('Event Tests', function() {
                     done(); 
                 } catch (error) {
                     done(error); 
+                    console.log(error);
                 }
+                
             });
     });
 

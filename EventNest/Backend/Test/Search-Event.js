@@ -11,7 +11,7 @@ describe('Event Retrieval Tests', function() {
     const expectedId = "507f191e810c19729de860ea";
     it('should retrieve an event by ID', function(done) {
         chai.request(app)
-            .get(`/Events/find/${expectedId}`) 
+            .get(`/TPL/Events/find/${expectedId}`) 
             .end(function(err, res) {
                 if (err) {
                     done(err);

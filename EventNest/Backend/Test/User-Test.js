@@ -9,7 +9,7 @@ describe('User Tests', function() {
 
     it('should create a new user', function(done) {
         chai.request(app)
-            .post('/Users/register')
+            .post('/TPL/Users/register')
             .send({ 
                 "Username": "Balkis",
                 "email": "Balkis@example.com",

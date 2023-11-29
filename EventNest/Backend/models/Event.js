@@ -9,7 +9,7 @@ const eventSchema = new mongoose.Schema({
    imageUrl: String
 
 
-});
+},{ collection: 'Events' });
 
 const Event = mongoose.model('Event', eventSchema);
 

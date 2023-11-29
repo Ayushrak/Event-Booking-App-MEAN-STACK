@@ -18,6 +18,7 @@ router.post('/add', async (req, res) => {
     res.status(201).send(savedEvent); // Set the status code to 201 because RESTful API practice to return a 201 Created
   } catch (err) {
     res.status(400).send(err);
+    console.log(err);
   }
 });
 
