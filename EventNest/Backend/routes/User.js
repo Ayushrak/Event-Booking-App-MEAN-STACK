@@ -40,5 +40,56 @@ router.post('/login', async (req, res) => {
 });
 
 
+/***************RSVPS HANDLING LOGIC****************/
+
+
+//Adding to RSVPs arrays 
+router.post('/user/:userId/rsvp/:eventId', async (req, res) => {
+  try {
+      const user = await User.findById(req.params.userId);
+      const eventId = req.params.eventId;
+
+      // Ensure user exists
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+
+      // Add the event to the user's rsvps array
+      console.log(user);
+      console.log("********************")
+      user.rsvps.push(eventId);
+      console.log(user.rsvps);
+      await user.save();
+      res.status(200).send(user);
+  } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+  }
+});
+
+
+
+//Retrieving from RSVP'd events 
+
+router.get('/user/:userId/rsvp', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).populate('rsvps');
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).json(user.rsvps);
+    
+    console.log(user);
+    console.log("*****************")
+    console.log(user.rsvps);
+    } catch (err) {
+  console.log(err);
+  res.status(500).send("Internal server error");
+}
+});
+
+
+
+
 
 module.exports = router;

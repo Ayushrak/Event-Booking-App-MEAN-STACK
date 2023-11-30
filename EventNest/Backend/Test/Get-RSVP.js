@@ -5,34 +5,27 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('User Login Tests', function() {
-    
-    // User credentials for login
-    const loginData = {
-        "email": "Balkis@example.com",
-        "password": "BalkisPass123!"
-    };
+describe('Retrieve User RSVPs Tests', () => {
 
-    it('should log in an existing user', function(done) {
+    it('should retrieve RSVPs for a specific user', (done) => {
+        const userId = '507f191e810c19729de860ea';
+
         chai.request(app)
-            .post('/TPL/Users/login')
-            .send(loginData)
+            .get(`/TPL/Users/user/${userId}/rsvp`)
             .end((err, res) => {
                 if (err) {
-                    console.log(err);
                     done(err);
                     return;
                 }
 
                 try {
                     expect(res).to.have.status(200);
-                } catch (error) {
-                    console.log(error);
-                    done(error);
-                    return;
-                }
+                    expect(res.body).to.be.an('array');
 
-                done();
+                    done();
+                } catch (error) {
+                    done(error);
+                }
             });
     });
 
