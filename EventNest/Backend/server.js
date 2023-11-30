@@ -1,28 +1,29 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const cors = require('cors');
 
-const multer = require('multer');
-const cors=require('cors');
-const upload = multer({ dest: 'uploads/' });
-require('./config/connect');
-const EventRoute=require('./routes/Event');
-const UserRoute=require('./routes/User');
+require('./config/connect'); 
+const EventRoute = require('./routes/Event');
+const UserRoute = require('./routes/User');
 
-//set up 
 const app = express();
+
+
+app.use(cors()); 
 app.use(express.json()); 
-//routes set up 
-app.use('/TPL/Events',EventRoute); 
-app.use('/TPL/Users',UserRoute);
+app.use('/TPL/Events', EventRoute);
+app.use('/TPL/Users', UserRoute);
 
-//port set up 
+// Serve static files from 'uploads' directory
+app.use('/uploads', express.static('uploads'));
 
-const server=app.listen(3000,()=>{
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Server broke!');
+});
 
-
-    console.log('server is working');
-
-} );
+const server = app.listen(3000, () => {
+    console.log('Server is working on port 3000');
+});
 
 module.exports = server;

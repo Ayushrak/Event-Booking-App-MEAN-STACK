@@ -13,11 +13,9 @@
     "chai": "^4.3.10",
     "chai-http": "^4.4.0",
     "mocha": "^10.2.0"
-  }
-  ,
+  },
   "scripts": {
     "test": "mocha 'test/**/*.js' --timeout 100000",
     "test-debug": "mocha --debug 'test/**/*.js' --timeout 100000"
   }
-
 }

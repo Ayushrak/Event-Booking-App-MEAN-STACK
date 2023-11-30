@@ -5,14 +5,19 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('Event Tests', function() {
-    this.timeout(5000); 
+describe('User Login Tests', function() {
+    
+    // User credentials for login
+    const loginData = {
+        "email": "Balkis@example.com",
+        "password": "BalkisPass123!"
+    };
 
-    it('should list all events', function(done) {
+    it('should log in an existing user', function(done) {
         chai.request(app)
-            .get('/TPL/Events/all') 
-            .end(function(err, res) {
-              
+            .post('/TPL/Users/login')
+            .send(loginData)
+            .end((err, res) => {
                 if (err) {
                     done(err);
                     return;
@@ -20,14 +25,12 @@ describe('Event Tests', function() {
 
                 try {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.be.an('array');
-
-                    done(); 
                 } catch (error) {
-                    done(error); 
-                    console.log(error);
+                    done(error);
+                    return;
                 }
-                
+
+                done();
             });
     });
 

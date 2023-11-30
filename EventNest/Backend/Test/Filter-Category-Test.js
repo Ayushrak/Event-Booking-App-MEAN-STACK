@@ -5,14 +5,12 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('Event Tests', function() {
-    this.timeout(5000); 
+describe('Event Filter By Category Tests', () => {
 
-    it('should list all events', function(done) {
+    it('should retrieve events in the Music category', (done) => {
         chai.request(app)
-            .get('/TPL/Events/all') 
-            .end(function(err, res) {
-              
+            .get('/TPL/Events/byCategory/Music') 
+            .end((err, res) => {
                 if (err) {
                     done(err);
                     return;
@@ -21,13 +19,16 @@ describe('Event Tests', function() {
                 try {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.an('array');
+                    if (res.body.length > 0) {
+                        res.body.forEach(event => {
+                            expect(event.Category).to.equal('Music');
+                        });
+                    }
 
-                    done(); 
+                    done();
                 } catch (error) {
-                    done(error); 
-                    console.log(error);
+                    done(error);
                 }
-                
             });
     });
 
