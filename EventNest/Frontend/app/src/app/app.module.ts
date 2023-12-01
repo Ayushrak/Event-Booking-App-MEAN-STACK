@@ -11,6 +11,7 @@ import { FeaturedEventsComponent } from './featured-events/featured-events.compo
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterNavBarComponent } from './filter-nav-bar/filter-nav-bar.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     WelcomeComponent,
     FeaturedEventsComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+    FilterNavBarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+  <!-- ======= Hero Section ======= -->
+  <main id="main">
+    <!-- Filter Menu -->
+    <div class="container mb-2">
+      <div id="services-filter" class="filters">
+        <ul class="nav nav-pills">
+            <li class="nav-item" *ngFor="let category of categories">
+                <a class="nav-link filter-btn" (click)="filterEvents(category)">{{ category }}</a>
+            </li>
+        </ul>
+      </div>
+    </div>
