@@ -39,90 +39,35 @@
     </div>
 <!-- Services Section -->
 <section class="services">
-  <div class="container">
-    <div class="row">
-      <!-- Event Card -->
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-4" data-aos="fade-up">
-        <div class="card">
-          <img src="assets/img/About/event.PNG" class="card-img-top" alt="Event">
-          <div class="card-body">
-            <h5 class="card-title">Concert Night</h5>
-            <p class="card-text">Enjoy live music at the riverside concert hall.</p><br>
-            <div class="card-info">
-              <div class="info-item">
-                <i class="bx bx-calendar-event"></i>
-                <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">Jul 24</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-time-five"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;"  >8 PM</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-map"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;">Riverside street</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-4" data-aos="fade-up">
-        <div class="card">
-          <img src="assets/img/About/event.PNG" class="card-img-top" alt="Event">
-          <div class="card-body">
-            <h5 class="card-title">Concert Night</h5>
-            <p class="card-text">Enjoy live music at the riverside concert hall.</p><br>
-            <div class="card-info">
-              <div class="info-item">
-                <i class="bx bx-calendar-event"></i>
-                <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">Jul 24</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-time-five"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;"  >8 PM</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-map"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;">Riverside street</span>
+    <div class="container">
+      <div class="row">
+        <!-- Dynamic Event Card -->
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-4" *ngFor="let event of events" data-aos="fade-up">
+          <div class="card">
+            <img [src]="event.imageUrl" class="card-img-top" alt="Event">
+            <div class="card-body">
+              <h5 class="card-title">{{ event.Title }}</h5>
+              <div class="card-info">
+                <div class="info-item">
+                  <i class="bx bx-calendar-event"></i>
+                  <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">{{ event.Date }}</span>
+                </div>
+                <div class="info-item">
+                  <i class="bx bx-time-five"></i>
+                  <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">{{ event.Time }}</span>
+                </div>
+                <div class="info-item">
+                  <i class="bx bx-map"></i>
+                  <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">{{ event.location }}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- End of Dynamic Event Card -->
       </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-4" data-aos="fade-up">
-        <div class="card">
-          <img src="assets/img/About/event.PNG" class="card-img-top" alt="Event">
-          <div class="card-body">
-            <h5 class="card-title">Concert Night</h5>
-            <p class="card-text">Enjoy live music at the riverside concert hall.</p><br>
-            <div class="card-info">
-              <div class="info-item">
-                <i class="bx bx-calendar-event"></i>
-                <span style="font-family: 'Roboto', sans-serif; color: #1e4356;">Jul 24</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-time-five"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;"  >8 PM</span>
-              </div>
-              <div class="info-item">
-                <i class="bx bx-map"></i>
-                <span  style="font-family: 'Roboto', sans-serif; color: #1e4356;">Riverside street</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Repeat for other events -->
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card">
-          <!-- Other event details -->
-        </div>
-      </div>
-      <!-- More event cards... -->
     </div>
-  </div>
-</section>
+  </section>
 <!-- End Services Section -->
 
 
