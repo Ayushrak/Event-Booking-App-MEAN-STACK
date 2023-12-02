@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { UserModule } from './user/user.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterNavBarComponent } from './filter-nav-bar/filter-nav-bar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,9 +28,11 @@ import { FilterNavBarComponent } from './filter-nav-bar/filter-nav-bar.component
     FilterNavBarComponent
   ],
   imports: [
+    UserModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()

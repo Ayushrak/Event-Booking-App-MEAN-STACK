@@ -5,25 +5,23 @@
         <div class="col-lg-5">
           <div class="info-box mb-4">
             <h3>Sign Up</h3>
-            <form>
+            <form (ngSubmit)="onRegister()">
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" required>
+                <input type="text" class="form-control" [(ngModel)]="AuthUser.Username" name="username" id="username" placeholder="Username" required>
               </div>
               <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+                <input type="email" class="form-control" [(ngModel)]="AuthUser.email" name="email" id="email" placeholder="Email Address" required>
               </div>
-              <div class="form-check mt-3">
-                <input type="checkbox" class="form-check-input" id="terms" required>
-                <label class="form-check-label justify-content-between" for="terms">I accept the <a href="terms.html">Terms and Conditions</a></label>
+              <div class="form-group mt-3">
+                <input type="password" class="form-control" [(ngModel)]="AuthUser.password" name="password" id="password" placeholder="Password" required>
               </div>
+              <!-- ... other form fields ... -->
               <div class="text-center mt-3">
                 <button type="submit" class="btn">Register</button>
-                <a href="index.html" class="btn btn-secondary">Back</a>
+                <!-- ... -->
               </div>
             </form>
+            
           </div>
         </div>
       </div>
