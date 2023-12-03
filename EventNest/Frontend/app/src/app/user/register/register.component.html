@@ -15,12 +15,17 @@
               <div class="form-group mt-3">
                 <input type="password" class="form-control" [(ngModel)]="AuthUser.password" name="password" id="password" placeholder="Password" required>
               </div>
+              <div class="form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="terms" required>
+                <label class="form-check-label justify-content-between" for="terms">I accept the <a href="terms.html">Terms and Conditions</a></label>
+              </div>
+          
               <!-- ... other form fields ... -->
               <div class="text-center mt-3">
+                <a href="index.html" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn">Register</button>
-                <!-- ... -->
               </div>
-            </form>
+             </form>
             
           </div>
         </div>

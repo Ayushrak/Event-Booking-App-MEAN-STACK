@@ -6,12 +6,15 @@
         <div class="col-lg-5">
           <div class="info-box mb-4">
             <h3>Login to Your Account</h3>
-            <form>
+            <form (ngSubmit)="onLogin()">
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="username" id="username" placeholder="Your Username" required>
+                <input type="text" [(ngModel)]="user.email" class="form-control" name="email" id="email" required placeholder="Your Email" required>
               </div>
               <div class="form-group mt-3">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" required>
+                <input type="password" [(ngModel)]="user.password" class="form-control" name="password" id="password" placeholder="Your Password" required>
+              </div>
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage }}
               </div>
               <div class="text-center mt-3">
                 <button type="submit">Login</button>

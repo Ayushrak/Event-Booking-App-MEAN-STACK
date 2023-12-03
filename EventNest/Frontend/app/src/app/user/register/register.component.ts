@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import { User } from '../user.model';
 
 
-interface User {
-  Username: string;
-  email: string;
-  password: string;
-  rsvp?: string[]; // Assuming RSVPs are an array of Event IDs
-}
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
