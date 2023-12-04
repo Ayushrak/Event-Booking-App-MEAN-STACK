@@ -16,15 +16,12 @@
               <li><a href=""> For organizers </a></li>
               <li><a href="">Contact Us</a></li>
               <!-- When user is not logged in -->
-              <div *ngIf="!isLoggedIn">
-            1  <li><a  routerLink="/login" ><button class="btn login-btn">Login</button></a></li>
-               <li><a  routerLink="/register"><button class="btn signup-btn">Sign up</button></a></li>
-              </div>
+              <li *ngIf="!isLoggedIn"><a  routerLink="/login" ><button class="btn login-btn">Login</button></a></li>
+               <li *ngIf="!isLoggedIn" ><a  routerLink="/register"><button class="btn signup-btn">Sign up</button></a></li>
               <!-- When user is logged in -->
-              <div *ngIf="isLoggedIn">
-    <a href="">My Events</a>
-    <div class="user-initials">{{ authService.getUserInitials() }}</div>
-  </div>
+              
+              <li *ngIf="isLoggedIn" class="my-events" ><a href="">My Events</a></li>
+              <li *ngIf="isLoggedIn" class="user-initials">{{ authService.getUserInitials() }}</li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>

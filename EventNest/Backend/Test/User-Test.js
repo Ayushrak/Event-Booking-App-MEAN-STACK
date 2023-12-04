@@ -11,9 +11,9 @@ describe('User Tests', function() {
         chai.request(app)
             .post('/TPL/Users/register')
             .send({ 
-                "Username": "Charlie789",
-                "email": "charlie@example.com",
-                "password": "password789"
+                "Username": "Balkis89",
+                "email": "Balkis@example.com",
+                "password": "BalkisPass123!"
             })
             .end((err, res) => {
                 if (err) {
