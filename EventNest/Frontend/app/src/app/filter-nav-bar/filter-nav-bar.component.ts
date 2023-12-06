@@ -9,7 +9,7 @@ import { SharedService } from '../shared.service';
   styleUrl: './filter-nav-bar.component.css'
 })
 export class FilterNavBarComponent {
-  categories: string[] = ['All', 'Concert', 'Conference', 'Dance', 'Education', 'Party', 'Travel', 'Experience', 'Festival', 'Movie'];
+  categories: string[] = ['All', 'Music', 'Conference', 'Dance', 'Education', 'Party', 'Sports', 'Experience', 'Festival', 'Movie'];
 
   constructor(private eventsAPIService: EventsAPIService, private sharedService: SharedService) {}
 

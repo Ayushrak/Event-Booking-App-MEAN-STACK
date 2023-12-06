@@ -1,0 +1,48 @@
+.create-event-form {
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.create-event-form h2 {
+    color: #1e4356;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.create-event-form .form-group {
+    margin-bottom: 15px;
+}
+
+.create-event-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #1e4356;
+}
+
+.create-event-form .form-group input,
+.create-event-form .form-group select,
+.create-event-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+}
+
+.create-event-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #68A4C4;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.create-event-form button:hover {
+    background-color: #5A88CA;
+}

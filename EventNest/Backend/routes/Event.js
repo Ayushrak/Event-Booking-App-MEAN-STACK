@@ -37,6 +37,7 @@ router.post('/add',  upload.single('imageFile'),async (req, res) => {
     Date:formattedDate,
     Time: req.body.Time,
     location: req.body.location,
+    description:req.body.description,
     // Use uploaded file path, or null if no file was uploaded
     imageUrl: req.file ? req.file.path : null 
   });

@@ -9,7 +9,9 @@ const UserSchema = new mongoose.Schema({
         Username:String,
         email: String, 
         password: String,
-        rsvps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event', default: [] }]
+        rsvps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event', default: [] }],
+        myEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event', default: [] }]
+
 
         
 

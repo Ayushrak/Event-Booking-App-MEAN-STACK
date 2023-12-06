@@ -88,6 +88,42 @@ router.get('/user/:userId/rsvp', async (req, res) => {
 }
 });
 
+/***************User events HANDLING LOGIC****************/
+
+// Adding an event to a user's myEvents array
+router.post('/user/:userId/myEvents/:eventId', async (req, res) => {
+  try {
+      const user = await User.findById(req.params.userId);
+      const eventId = req.params.eventId;
+
+      // Ensure user exists
+      if (!user) {
+          return res.status(404).send("User not found");
+      }
+
+      // Add the event to the user's myEvents array
+      user.myEvents.push(eventId);
+      await user.save();
+      res.status(200).send(user);
+  } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+  }
+});
+
+// Retrieving events created by a user
+router.get('/user/:userId/myEvents', async (req, res) => {
+  try {
+      const user = await User.findById(req.params.userId).populate('myEvents');
+      if (!user) {
+          return res.status(404).send("User not found");
+      }
+      res.status(200).json(user.myEvents);
+  } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+  }
+});
 
 
 

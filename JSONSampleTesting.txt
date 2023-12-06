@@ -8,6 +8,7 @@
             { "$oid": "5f50c31e1c9d44000047b035" },
             { "$oid": "5f50c31e1c9d44000047b036" }
         ]
+	"myEvents": []
     },
     {
         "_id": { "$oid": "507f191e810c19729de860eb" },
@@ -17,6 +18,7 @@
         "rsvps": [
             { "$oid": "5f50c31e1c9d44000047b037" }
         ]
+	"myEvents": []
     },
     {
         "_id": { "$oid": "507f191e810c19729de860ec" },
@@ -24,6 +26,7 @@
         "email": "charlie@example.com",
         "password": "password789",
         "rsvps": []
+	"myEvents": []
     }
 ]
 
@@ -38,16 +41,19 @@
         "Date": "2023-06-15",
         "Time": "14:00",
         "location": "Central Park",
-        "imageUrl": "http://example.com/images/summer-music.jpg"
+        "description": "An amazing evening full of live music and vibrant atmosphere.",
+		
+        "imageUrl": "https://th.bing.com/th?id=OIP.oK9Id0MVa-am3ndb12WVQgHaEp&w=315&h=198&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
     },
     {
         "_id": { "$oid": "5f50c31e1c9d44000047b035" },
         "Title": "Tech Conference 2023",
-        "Category": "Technology",
+        "Category": "Conference",
         "Date": "2023-09-10",
         "Time": "09:00",
         "location": "Convention Center",
-        "imageUrl": "http://example.com/images/tech-conference.jpg"
+	"description":"A gathering of tech enthusiasts and professionals to discuss the future of technology."
+        "imageUrl": "https://th.bing.com/th?id=OIP.l94-LvtSGtwPxJPyiezK1gHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
     },
     {
         "_id": { "$oid": "5f50c31e1c9d44000047b037" },
@@ -56,7 +62,8 @@
         "Date": "2023-04-22",
         "Time": "07:00",
         "location": "City Stadium",
-        "imageUrl": "http://example.com/images/marathon.jpg"
+	"description":"For the lovers of sports, come and join us ! ",
+        "imageUrl": "https://th.bing.com/th?id=OIP.fnsEjoWSjTY2xEul299sZgHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
     },
     {
         "_id": { "$oid": "507f191e810c19729de860ea" },
@@ -65,7 +72,8 @@
         "Date": "2023-05-18",
         "Time": "16:00",
         "location": "Downtown Gallery",
-        "imageUrl": "http://example.com/images/modern-art.jpg"
+	"description":"For the lovers of arts, come and join us ! ",
+        "imageUrl": "https://th.bing.com/th?id=OIP.WNWUORbcCKvbuJL0Mfm63QHaFC&w=303&h=206&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
     },
     {
         "_id": { "$oid": "507f191e810c19729de860eb" },
@@ -74,6 +82,7 @@
         "Date": "2023-07-30",
         "Time": "11:00",
         "location": "City Hall Plaza",
-        "imageUrl": "http://example.com/images/food-expo.jpg"
+	"description":"For the lovers of food, come and join us ! ",
+        "imageUrl": "https://th.bing.com/th?id=OIP.9QME3ACugU-020TEOCdwSwHaKi&w=209&h=298&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
     }
 ]
