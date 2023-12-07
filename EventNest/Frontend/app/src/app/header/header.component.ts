@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit,ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,18 @@ import { AuthService } from '../auth.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  
+  showDropdown: boolean = false; 
   isLoggedIn: boolean = false;
   private loginStatusSubscription: Subscription = new Subscription();
 
-  constructor(public authService: AuthService,private cdRef: ChangeDetectorRef) {
+  constructor(public authService: AuthService,private cdRef: ChangeDetectorRef,private router:Router) {
 
 
   }
+
+
+
+
 
 ngOnInit() {
     this.loginStatusSubscription = this.authService.loginStatus$.subscribe(
@@ -33,5 +38,15 @@ ngOnInit() {
   }
   ngOnDestroy() {
     this.loginStatusSubscription.unsubscribe();
+  }
+
+  
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']); // Redirect to login page after logout
+  } 
+  
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown; // Toggle the dropdown visibility
   }
 }

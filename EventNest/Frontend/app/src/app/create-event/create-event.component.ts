@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventsAPIService } from '../events-api.service';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router'; 
 
 
 interface EventData {
@@ -30,7 +31,7 @@ export class CreateEventComponent {
     eventImage: null // Initially null, will be set when a file is selected
   };
 
-  constructor(private eventService:EventsAPIService, private authService:AuthService) {}
+  constructor(private eventService:EventsAPIService, private authService:AuthService, private router:Router) {}
     
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
@@ -40,6 +41,7 @@ export class CreateEventComponent {
   onCreateEvent() {
     if (!this.authService.isLoggedIn()) {
       console.error("User is not logged in");
+      this.router.navigate(['/login']); // Redirect to login page
       return;
     }
 

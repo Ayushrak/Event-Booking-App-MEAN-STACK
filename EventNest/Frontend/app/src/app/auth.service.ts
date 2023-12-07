@@ -81,7 +81,7 @@ getCurrentUserId(): string | null {
   private reinitializeUser(): void {
     const username = sessionStorage.getItem('username');
     const email = sessionStorage.getItem('email');
-    const userId = sessionStorage.getItem('userId'); // Retrieving the user ID
+    const userId = sessionStorage.getItem('userId'); 
 
     if (username && email && userId) {
         this.currentUser = { 
@@ -94,5 +94,12 @@ getCurrentUserId(): string | null {
         };
     }
 }
+
+//user logout 
+logout() {
+  sessionStorage.clear(); // Clear all session storage items
+  this.clearUser();
+}
+
   
 }
