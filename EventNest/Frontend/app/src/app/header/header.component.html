@@ -14,7 +14,7 @@
               <li><a href="">Events</a></li>
               <li><a href=""> Happening now </a></li>
               <li><a href=""> For organizers </a></li>
-              <li><a href="">Contact Us</a></li>
+              <li><a routerLink="/Contact">Contact Us</a></li>
               <!-- When user is not logged in -->
               <li *ngIf="!isLoggedIn"><a  routerLink="/login" ><button class="btn login-btn">Login</button></a></li>
                <li *ngIf="!isLoggedIn" ><a  routerLink="/register"><button class="btn signup-btn">Sign up</button></a></li>

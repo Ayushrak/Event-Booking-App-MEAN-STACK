@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsAPIService {
-  private currentCategory = new BehaviorSubject<string>('all');
-  private currentEvents = new BehaviorSubject<any[]>([]);
+  private rsvpViewToggleSource = new Subject<void>();
+  rsvpViewToggle$ = this.rsvpViewToggleSource.asObservable();
   
+  private showRsvpedEventsSource = new BehaviorSubject<boolean>(false);
+  showRsvpedEvents$ = this.showRsvpedEventsSource.asObservable();
+
   private EventBaseUrl = 'http://localhost:3000/TPL/Events'; // Adjust if your URL is different
   private userBaseUrl = 'http://localhost:3000/TPL/Users'; // URL for user-related operations
   private staticBaseUrl = 'http://localhost:3000';
@@ -66,7 +69,7 @@ export class EventsAPIService {
   }
   
   // Method to get RSVP'd events for a user
-  getUserRSVPs(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.userBaseUrl}/user/${userId}/rsvp`);
+  triggerRsvpedEventsView(): void {
+    this.showRsvpedEventsSource.next(true);
   }
 }

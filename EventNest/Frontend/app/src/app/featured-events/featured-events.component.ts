@@ -12,12 +12,13 @@ import Swal from 'sweetalert2';
 export class FeaturedEventsComponent implements OnInit {
   events: any[] = [];
   rsvpedEvents: Set<string> = new Set();
+  showOnlyRSVPed: boolean = false;
 
   constructor(private EventsAPIService : EventsAPIService,private sharedService: SharedService,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.loadAllEvents();
-
+    
 
     this.sharedService.events$.subscribe(updatedEvents => {
       this.events = updatedEvents.map(event => ({
@@ -26,6 +27,8 @@ export class FeaturedEventsComponent implements OnInit {
       }));
       console.log(this.events);
     });
+    
+    
     
   }
 
@@ -94,6 +97,19 @@ export class FeaturedEventsComponent implements OnInit {
   isEventRsvped(eventId: string): boolean {
     return this.rsvpedEvents.has(eventId);
   }
+
+  toggleRSVPedView(): void {
+    this.showOnlyRSVPed = !this.showOnlyRSVPed;
+    if (this.showOnlyRSVPed) {
+      // Filter events to show only RSVPed ones
+      this.events = this.events.filter(event => this.rsvpedEvents.has(event._id));
+    } else {
+      // Load all events
+      this.loadAllEvents();
+    }
+  }
+
+  
 }
   
   

@@ -15,6 +15,7 @@ import { FilterNavBarComponent } from './filter-nav-bar/filter-nav-bar.component
 import { FormsModule } from '@angular/forms';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { UsersMyEventsComponent } from './users-my-events/users-my-events.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UsersMyEventsComponent } from './users-my-events/users-my-events.compon
     LayoutComponent,
     FilterNavBarComponent,
     CreateEventComponent,
-    UsersMyEventsComponent
+    UsersMyEventsComponent,
+    ContactComponent
   ],
   imports: [
     UserModule,
