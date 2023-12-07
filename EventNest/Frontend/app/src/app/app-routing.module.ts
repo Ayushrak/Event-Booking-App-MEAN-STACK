@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AuthGuardService } from './auth-guard.service';
+import { UsersMyEventsComponent } from './users-my-events/users-my-events.component';
 const routes: Routes = [
   { 
     path: '', 
@@ -13,6 +14,8 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent,data: { breadcrumb: 'Home' }  },
       { path: 'create-event', component: CreateEventComponent,  canActivate: [AuthGuardService]},
+      { path: 'my-Events', component:UsersMyEventsComponent,data: { breadcrumb: 'myEvents' }  },
+
     ]
   },
   { path: 'login', component: LoginComponent, data: { breadcrumb: 'Login' } },

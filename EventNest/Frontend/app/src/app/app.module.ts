@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterNavBarComponent } from './filter-nav-bar/filter-nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { UsersMyEventsComponent } from './users-my-events/users-my-events.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
     HomeComponent,
     LayoutComponent,
     FilterNavBarComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    UsersMyEventsComponent
   ],
   imports: [
     UserModule,

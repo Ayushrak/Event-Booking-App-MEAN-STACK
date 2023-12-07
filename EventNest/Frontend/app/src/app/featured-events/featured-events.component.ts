@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsAPIService } from '../events-api.service';
 import { SharedService } from '../shared.service'; // Import SharedService
+import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-featured-events',
@@ -9,8 +11,9 @@ import { SharedService } from '../shared.service'; // Import SharedService
 })
 export class FeaturedEventsComponent implements OnInit {
   events: any[] = [];
+  rsvpedEvents: Set<string> = new Set();
 
-  constructor(private EventsAPIService : EventsAPIService,private sharedService: SharedService) { }
+  constructor(private EventsAPIService : EventsAPIService,private sharedService: SharedService,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.loadAllEvents();
@@ -34,7 +37,65 @@ export class FeaturedEventsComponent implements OnInit {
       }));
     });
   }
+  promptRsvp(eventId: string): void {
+    if (this.rsvpedEvents.has(eventId)) {
+      // Show alert that the event is already RSVPed
+      Swal.fire({
+        title: 'Already RSVPed',
+        text: 'You have already RSVPed for this event.',
+        icon: 'info',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      });
+    } else {
+      // Original RSVP confirmation prompt
+      Swal.fire({
+        title: 'Confirm RSVP',
+        text: "Do you want to RSVP for this event?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, RSVP!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.rsvpToEvent(eventId);
+        }
+      });
+    }
   }
 
+
+  rsvpToEvent(eventId: string): void {
+    const userId = this.authService.getCurrentUserId();
+    if (!userId) {
+      console.error("No user ID found");
+      return;
+    }
+
+    this.EventsAPIService.addEventToRSVPs(userId, eventId).subscribe(() => {
+      Swal.fire(
+        'RSVP Successful!',
+        'You have successfully RSVPed for the event.',
+        'success'
+        
+      );
+      this.rsvpedEvents.add(eventId); 
+    }, error => {
+      Swal.fire(
+        'Error',
+        'There was a problem RSVPing to the event.',
+        'error'
+      );
+    });
+
+  }
+
+  isEventRsvped(eventId: string): boolean {
+    return this.rsvpedEvents.has(eventId);
+  }
+}
+  
+  
 
 

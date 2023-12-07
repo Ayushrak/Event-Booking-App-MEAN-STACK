@@ -20,7 +20,7 @@ export class EventsAPIService {
 
   getAllEvents(): Observable<any[]> {
     return this.http.get<any[]>(`${this.EventBaseUrl}/all`);
-  }
+  }    
 
   getEventsByCategory(category: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.EventBaseUrl}/byCategory/${category}`);
@@ -48,5 +48,25 @@ export class EventsAPIService {
     // If imagePath is a relative path, prepend the backend base URL
     return `${this.staticBaseUrl}${imagePath}`;
   }
- 
+
+
+
+  /*******************************user events*****************************/
+  getUserEvents(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.userBaseUrl}/user/${userId}/myEvents`);
+  }
+
+  deleteEvent(eventId: string): Observable<any> {
+    return this.http.delete(`${this.EventBaseUrl}/delete/${eventId}`);
+  }
+
+
+  addEventToRSVPs(userId: string, eventId: string): Observable<any> {
+    return this.http.post(`${this.userBaseUrl}/user/${userId}/rsvp/${eventId}`, {});
+  }
+  
+  // Method to get RSVP'd events for a user
+  getUserRSVPs(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.userBaseUrl}/user/${userId}/rsvp`);
+  }
 }

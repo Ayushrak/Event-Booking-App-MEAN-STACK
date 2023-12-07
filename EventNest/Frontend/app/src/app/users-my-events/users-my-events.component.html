@@ -1,0 +1,30 @@
+
+    <div class="user-events-container">
+        <h2 class="user-events-title">My Events</h2>
+        <table class="user-events-table">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Place</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let event of userEvents ; let i = index">
+                <td data-label="Event Name">{{ event.Title}}</td>
+                <td data-label="Date">{{ event.Date | date }}</td>
+                <td data-label="Time">{{ event.Time }}</td>
+                <td data-label="Place">{{ event.location }}</td>
+                <td data-label="Category">{{ event.Category }}</td>
+                <td data-label="Description">{{ event.description }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteUserEvent(event._id, i)">Delete</button>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>

@@ -54,10 +54,14 @@ export class AuthService {
   }
 
   // Method to get current user's ID
-getCurrentUserId(): string | null {
-  return sessionStorage.getItem('userId');
-}
-
+  getCurrentUserId(): string | null {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('userId');
+    } else {
+      return null; // Explicitly return null when window is undefined
+    }
+  }
+  
   clearUser() {
     this.currentUser = null;
     //logout status emitted
@@ -96,10 +100,10 @@ getCurrentUserId(): string | null {
 }
 
 //user logout 
-logout() {
-  sessionStorage.clear(); // Clear all session storage items
-  this.clearUser();
-}
+ logout() {
+    sessionStorage.clear(); // Clear all session storage items
+    this.clearUser();
+  }
 
   
 }

@@ -114,7 +114,12 @@ router.post('/user/:userId/myEvents/:eventId', async (req, res) => {
 // Retrieving events created by a user
 router.get('/user/:userId/myEvents', async (req, res) => {
   try {
-      const user = await User.findById(req.params.userId).populate('myEvents');
+      const user = await User.findById(req.params.userId).populate({
+                                  path: 'myEvents',
+                                  options: { sort: { 'Date': 1 } } // Sort events by Date in ascending order
+                              });
+
+
       if (!user) {
           return res.status(404).send("User not found");
       }

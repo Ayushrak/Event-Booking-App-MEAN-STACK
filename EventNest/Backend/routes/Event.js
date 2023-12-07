@@ -123,13 +123,14 @@ router.put('/update/:id', async (req, res) => {
 //Delete event by ID
 router.delete('/delete/:id', async (req, res) => {
   try {
-    const event = await Event.findByIdAndRemove(req.params.id);
-    if (!event) return res.status(404).send('Event not found');
-    res.send(event);
+    const result = await Event.deleteOne({ _id: req.params.id });
+    if (result.deletedCount === 0) {
+      return res.status(404).send('Event not found');
+    }
+    res.send({ message: 'Event deleted successfully' });
   } catch (err) {
-    res.status(500).send(err);
+    console.error('Error during event deletion:', err.message);
+    res.status(500).send('Internal Server Error');
   }
 });
-
-
 module.exports = router;
