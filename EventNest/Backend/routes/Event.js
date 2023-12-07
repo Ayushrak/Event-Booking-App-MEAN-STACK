@@ -30,7 +30,14 @@ const upload = multer({
 
 //create event
 router.post('/add',  upload.single('imageFile'),async (req, res) => {
-  let formattedDate = new Date(req.body.Date).toISOString().split('T')[0];
+  let formattedDate = '';
+  if (req.body.Date && !isNaN(new Date(req.body.Date).getTime())) {
+      formattedDate = new Date(req.body.Date).toISOString().split('T')[0];
+  } else {
+      // Handle invalid date here (e.g., set a default date or return an error response)
+      console.error('Invalid date provided:', req.body.Date);
+      return res.status(400).send({ error: 'Invalid date provided' .req.body.Date});
+  }
   const event = new Event({
     Title: req.body.Title,
     Category: req.body.Category,
@@ -39,7 +46,7 @@ router.post('/add',  upload.single('imageFile'),async (req, res) => {
     location: req.body.location,
     description:req.body.description,
     // Use uploaded file path, or null if no file was uploaded
-    imageUrl: req.file ? req.file.path : null 
+    imageUrl: req.file ? `/uploads/${req.file.filename}` : null 
   });
 
   try {

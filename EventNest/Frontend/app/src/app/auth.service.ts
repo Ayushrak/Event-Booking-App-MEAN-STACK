@@ -17,7 +17,7 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) {
-    //condition added to handle sessionStorage only in a browser environment
+    //condition added to handle sessionStorage only in a browser environemnt 
     if (typeof window !== 'undefined') {
 
      const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
@@ -46,12 +46,17 @@ export class AuthService {
     sessionStorage.setItem('isLoggedIn', 'true');
     sessionStorage.setItem('username', user.Username); // Storing the username
     sessionStorage.setItem('email', user.email);
+    sessionStorage.setItem('userId',user._id);
     console.log("user has been set");
     //login status emitted 
     this.loginStatusSubject.next(true);
     console.log('Emitting login status: true');
-
   }
+
+  // Method to get current user's ID
+getCurrentUserId(): string | null {
+  return sessionStorage.getItem('userId');
+}
 
   clearUser() {
     this.currentUser = null;
@@ -76,11 +81,18 @@ export class AuthService {
   private reinitializeUser(): void {
     const username = sessionStorage.getItem('username');
     const email = sessionStorage.getItem('email');
+    const userId = sessionStorage.getItem('userId'); // Retrieving the user ID
 
-
-    if (username && email) {
-        this.currentUser = { Username: username, email: email, password: '' };    }
-    
+    if (username && email && userId) {
+        this.currentUser = { 
+            _id: userId, 
+            Username: username, 
+            email: email, 
+            password: '', 
+            rsvp: [], 
+            myEvents: [] 
+        };
     }
+}
   
 }

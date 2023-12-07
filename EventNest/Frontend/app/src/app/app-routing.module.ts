@@ -4,6 +4,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 const routes: Routes = [
   { 
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent,data: { breadcrumb: 'Home' }  },
-      // ... more routes that should have header and footer
+      { path: 'create-event', component: CreateEventComponent, },
     ]
   },
   { path: 'login', component: LoginComponent, data: { breadcrumb: 'Login' } },

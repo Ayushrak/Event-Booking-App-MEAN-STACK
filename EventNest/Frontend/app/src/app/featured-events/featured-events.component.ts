@@ -17,7 +17,10 @@ export class FeaturedEventsComponent implements OnInit {
 
 
     this.sharedService.events$.subscribe(updatedEvents => {
-      this.events = updatedEvents;
+      this.events = updatedEvents.map(event => ({
+        ...event,
+        imageUrl: this.EventsAPIService.getFullImageUrl(event.imageUrl)
+      }));
       console.log(this.events);
     });
     
@@ -25,9 +28,13 @@ export class FeaturedEventsComponent implements OnInit {
 
   loadAllEvents(): void {
     this.EventsAPIService.getAllEvents().subscribe(data => {
-      this.events = data;
+      this.events = data.map(event => ({
+        ...event,
+        imageUrl: this.EventsAPIService.getFullImageUrl(event.imageUrl)
+      }));
     });
   }
+  }
 
-}
+
 

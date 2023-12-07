@@ -5,31 +5,39 @@
     border-radius: 4px;
     max-width: 500px;
     margin: auto;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif; /* Consistent font for branding */
 }
 
 .create-event-form h2 {
     color: #1e4356;
     text-align: center;
     margin-bottom: 20px;
+    font-weight: 700; /* Stronger weight for headings */
+    font-family: 'Playfair Display', serif; /* A more elegant font for headings */
 }
 
 .create-event-form .form-group {
     margin-bottom: 15px;
+    display: flex; /* Flex layout for inline elements */
+    align-items: center; /* Vertical alignment */
 }
 
 .create-event-form .form-group label {
-    display: block;
-    margin-bottom: 5px;
+    flex: 0 0 30%; /* Fixed width for labels */
+    margin-bottom: 0; /* Remove bottom margin */
     color: #1e4356;
+    font-weight: 500; /* Slightly bold labels */
 }
 
 .create-event-form .form-group input,
 .create-event-form .form-group select,
 .create-event-form .form-group textarea {
-    width: 100%;
+    flex: 1; /* Allow input elements to fill space */
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #dcdcdc;
+    margin-left: 10px; /* Space between label and input */
 }
 
 .create-event-form button {
@@ -41,8 +49,15 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+    font-weight: 500; /* Slightly bold button text */
 }
 
 .create-event-form button:hover {
     background-color: #5A88CA;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
+}
+
+
+.picture{
+    background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6));
 }

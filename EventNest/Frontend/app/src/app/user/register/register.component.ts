@@ -3,7 +3,6 @@ import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { User } from '../user.model';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,10 +10,12 @@ import { User } from '../user.model';
 })
 export class RegisterComponent {
   AuthUser: User = {
+    _id:'',
     Username: '',
     email: '',
     password: '',
-    rsvp: []
+    rsvp: [],
+    myEvents:[]
   };
 
   constructor(private authService: AuthService, private router: Router) {}

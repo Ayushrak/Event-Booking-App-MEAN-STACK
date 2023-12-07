@@ -14,7 +14,13 @@ export class LoginComponent {
 
   errorMessage: string = '';
 
-  user: User = { Username: '', email: '', password: '', rsvp: [] };
+  user: User = { 
+  _id:'',
+  Username: '',
+   email: '', 
+   password: '', 
+   rsvp: [] ,
+   myEvents:[]};
 
 
   constructor(private authService: AuthService, private router: Router) {}
