@@ -70,7 +70,10 @@ export class CreateEventComponent {
         this.eventService.addToMyEvents(userId, eventId).subscribe(
           (res) =>{
             console.log("Event should be added here");
-            console.log('Event added to myEvents', res)}, 
+            console.log('Event added to myEvents', res)
+            this.router.navigate(['/my-Events']);
+          }, 
+            
           (error) =>{
             console.log("********Error**********-");
             console.error(error)}, 

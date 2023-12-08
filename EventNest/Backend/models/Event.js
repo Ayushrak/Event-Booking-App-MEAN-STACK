@@ -4,8 +4,7 @@ const eventSchema = new mongoose.Schema({
 
    Title:String,
    Category: String,
-   Date:String,// changed to string for display purposes, but the date is being tested as Date in the CRUD operation then sent as string
-   Time:String,
+   Date:String,
    location:String,
    description:String,
    imageUrl: String

@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class EventsAPIService {
   private rsvpViewToggleSource = new Subject<void>();
   rsvpViewToggle$ = this.rsvpViewToggleSource.asObservable();
-  
+
   private showRsvpedEventsSource = new BehaviorSubject<boolean>(false);
   showRsvpedEvents$ = this.showRsvpedEventsSource.asObservable();
 
@@ -68,8 +68,6 @@ export class EventsAPIService {
     return this.http.post(`${this.userBaseUrl}/user/${userId}/rsvp/${eventId}`, {});
   }
   
-  // Method to get RSVP'd events for a user
-  triggerRsvpedEventsView(): void {
-    this.showRsvpedEventsSource.next(true);
-  }
+
+ 
 }

@@ -14,9 +14,9 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent,data: { breadcrumb: 'Home' }  },
-      { path: 'create-event', component: CreateEventComponent,  canActivate: [AuthGuardService]},
+      { path: 'create-event', component: CreateEventComponent, data:{ breadcrumb: 'Create' }, canActivate: [AuthGuardService]},
       { path: 'my-Events', component:UsersMyEventsComponent,data: { breadcrumb: 'myEvents' }  },
-      { path: 'Contact', component:ContactComponent},
+      { path: 'Contact', component:ContactComponent,data:{ breadcrumb: 'Contact' } },
 
     ]
   },

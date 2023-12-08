@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
 
 
         
-
+        
 
 },{ collection: 'Users' });
 

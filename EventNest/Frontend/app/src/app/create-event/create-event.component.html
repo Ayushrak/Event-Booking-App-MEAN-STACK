@@ -43,7 +43,7 @@
                 <input type="file" id="eventImage" name="imageFile" (change)="onFileSelected($event)" name="eventImage" accept="image/*">
             </div>
 
-            <button type="submit">Create Event</button>
+            <button type="submit"  (ngSubmit)="onCreateEvent()">Create Event</button>
         </form>
     </div>
 </div>

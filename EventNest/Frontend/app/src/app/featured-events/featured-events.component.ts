@@ -3,6 +3,7 @@ import { EventsAPIService } from '../events-api.service';
 import { SharedService } from '../shared.service'; // Import SharedService
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-featured-events',
@@ -12,13 +13,12 @@ import Swal from 'sweetalert2';
 export class FeaturedEventsComponent implements OnInit {
   events: any[] = [];
   rsvpedEvents: Set<string> = new Set();
-  showOnlyRSVPed: boolean = false;
 
-  constructor(private EventsAPIService : EventsAPIService,private sharedService: SharedService,private authService:AuthService) { }
+  constructor(private EventsAPIService : EventsAPIService,private sharedService: SharedService,private authService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
     this.loadAllEvents();
-    
+
 
     this.sharedService.events$.subscribe(updatedEvents => {
       this.events = updatedEvents.map(event => ({
@@ -27,8 +27,6 @@ export class FeaturedEventsComponent implements OnInit {
       }));
       console.log(this.events);
     });
-    
-    
     
   }
 
@@ -41,7 +39,21 @@ export class FeaturedEventsComponent implements OnInit {
     });
   }
   promptRsvp(eventId: string): void {
-    if (this.rsvpedEvents.has(eventId)) {
+    if (!this.authService.isLoggedIn()) {
+      // Display a SweetAlert message if not logged in
+      Swal.fire({
+        title: 'Login Required',
+        text: 'You must be logged in to RSVP for events.',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Login'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect to login page
+          this.router.navigate(['/login']);
+        }
+      });}
+    else if (this.rsvpedEvents.has(eventId)) {
       // Show alert that the event is already RSVPed
       Swal.fire({
         title: 'Already RSVPed',
@@ -98,18 +110,8 @@ export class FeaturedEventsComponent implements OnInit {
     return this.rsvpedEvents.has(eventId);
   }
 
-  toggleRSVPedView(): void {
-    this.showOnlyRSVPed = !this.showOnlyRSVPed;
-    if (this.showOnlyRSVPed) {
-      // Filter events to show only RSVPed ones
-      this.events = this.events.filter(event => this.rsvpedEvents.has(event._id));
-    } else {
-      // Load all events
-      this.loadAllEvents();
-    }
-  }
+ 
 
-  
 }
   
   
